@@ -1,0 +1,46 @@
+package com.WebDriverDemos;
+
+import java.time.Duration;
+import java.util.NoSuchElementException;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+
+public class D23Synchronization_FluentWait {
+
+	public static void main(String[] args) {
+		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		
+		driver.get("https://omayo.blogspot.com/");
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
+		
+		FluentWait<WebDriver>wait = new FluentWait<WebDriver>(driver);
+		
+		WebElement chkBox = driver.findElement(By.id("dte"));
+		
+		System.out.println("Before");
+		System.out.println("Selected: " + chkBox.isSelected());
+		System.out.println("Enabled : " + chkBox.isEnabled());
+		
+		driver.findElement(By.xpath("//*[@id=\"HTML47\"]/div[1]/button")).click();
+		
+		wait.withTimeout(Duration.ofSeconds(15))
+		.ignoring(NoSuchElementException.class)
+		.pollingEvery(Duration.ofMillis(1))
+		.until(ExpectedConditions.elementToBeClickable(chkBox)).click();
+		
+		System.out.println("\nAfter");
+		System.out.println("Selected: " + chkBox.isSelected());
+		System.out.println("Enabled : " + chkBox.isEnabled());
+		
+		driver.close();
+	}
+
+}

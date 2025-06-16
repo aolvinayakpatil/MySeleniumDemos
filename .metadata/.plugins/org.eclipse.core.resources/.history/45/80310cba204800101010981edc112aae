@@ -1,0 +1,59 @@
+package com.Assignments;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+/*14.Complete redbus assignment with Explicit Wait (https://www.redbus.in/)
+		a.Click on From 
+		b.Enter first 4 characters from your city (Kolhapur – kolh)
+		c.Click on the 1st option (City)
+		d.Click on To
+		e.Enter Bang (Bangalore)
+		f.Click on Bangalore from the list
+		g.Click on Calendar icon
+		h.Click on 30
+		i.Click on Search buses button
+		j.Display the 1st bus from list
+ */
+public class A14_redBus_ExplicitWait {
+
+	public static void main(String[] args) throws InterruptedException {
+
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+
+		driver.get("https://www.redbus.in/");
+		
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+
+		//From
+
+		driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div[2]/div/div/div[1]/div[1]/div/div/div/div[1]")).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("srcDest"))).sendKeys("kolh");
+//		driver.findElement(By.id("srcDest")).sendKeys("kolh");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"root\"]/div[2]/div/div[2]/div/div/div[1]/div[1]/div/div[2]/div[2]/div[1]/div[1]/div/div/div"))).click();
+
+		//To
+		driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div[2]/div/div/div[1]/div[2]/div[2]/div[1]/div[1]/div")).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("srcDest"))).sendKeys("Bang");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"root\"]/div[2]/div/div[2]/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div[1]/div/div/div"))).click();
+
+		//date
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"root\"]/div[2]/div/div[2]/div/div/div[1]/div[3]/div[1]/i"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"root\"]/div[2]/div/div[2]/div/div/div[1]/div[3]/div[3]/div[2]/div/ul/li[36]/div/div/span"))).click();
+
+		//Search Button
+
+		driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div[2]/div/button/i")).click();
+		Thread.sleep(10000);
+
+		System.out.println(driver.findElement(By.xpath("//*[@id=\"8331995\"]/div[2]/div[3]/div/div[1]")).getText());
+		driver.close();
+	}
+
+}

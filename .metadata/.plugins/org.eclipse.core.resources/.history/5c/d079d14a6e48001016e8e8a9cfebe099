@@ -1,0 +1,35 @@
+package com.Assignments;
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+/*16.Open https://dash.bling-center.com/platform/signIn.html
+		a.Click on forgot password
+		b.Enter your email id
+		c.Click on reset password button
+		d.Display the text (message) in green color.
+*/
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class A16_BlingAssignment {
+
+	public static void main(String[] args) {
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		
+		driver.get("https://dash.bling-center.com/platform/signIn.html");
+		
+		driver.findElement(By.xpath("//*[@id=\"main-container\"]/div/div[2]/div/div/div[5]/button")).click();
+		driver.findElement(By.id("email")).sendKeys("test@123.com");
+		driver.findElement(By.id("password")).sendKeys("qwert123");
+		
+		driver.findElement(By.xpath("//*[@id=\"main-container\"]/div/div[2]/div/div/button")).click();
+		
+		
+		
+		
+		
+	}
+
+}

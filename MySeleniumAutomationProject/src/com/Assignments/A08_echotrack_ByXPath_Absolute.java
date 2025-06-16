@@ -1,5 +1,11 @@
 package com.Assignments;
-
+/*8.Open https://www.echotrak.com/Login.aspx?ReturnUrl=%2f
+	a.Enter user name (vinayak)
+	b.Enter password (vinayak123)
+	c.Click on Login button
+	d.Display an error message.
+Use Absolute XPath locator
+*/
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

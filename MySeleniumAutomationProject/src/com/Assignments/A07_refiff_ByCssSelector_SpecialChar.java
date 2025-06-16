@@ -1,5 +1,11 @@
 package com.Assignments;
-
+/*7.Open https://register.rediff.com/register/register.php?FormName=user_details
+	a.Enter full name
+	b.Enter Rediff Id
+	c.Enter password
+	d.Enter confirm password
+Use CssSelector Special characters
+*/
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

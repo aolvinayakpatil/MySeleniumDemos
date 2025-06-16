@@ -1,0 +1,19 @@
+package com.WebDriverDemos;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class D20Synchronization_ThreadSleep {
+
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://www.redbus.in/");
+		
+		//From
+		Thread.sleep(5000);
+		driver.findElement(By.xpath("//*[@id=\"root\"]/div[3]/div/div[2]/div/div/div[1]/div[1]/div/div/div/div[1]")).click();
+		//driver.findElement(By.id(""))
+	}
+
+}

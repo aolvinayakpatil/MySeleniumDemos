@@ -1,0 +1,123 @@
+package com.javaAssignment;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+
+public class OrangeHRMAutomation {
+    public static void main(String[] args) {
+        // Setup WebDriver
+        WebDriver driver = new ChromeDriver();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        driver.manage().window().maximize();
+        
+        try {
+            // Step a: Open login page
+            driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+            
+            // Step a: Login as Admin
+            driver.findElement(By.xpath("//input[@name='username']")).sendKeys("admin");
+            driver.findElement(By.xpath("//input[@name='password']")).sendKeys("admin123");
+            driver.findElement(By.xpath("//button[@type='submit']")).click();
+            
+            // Step b: Click on PIM
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[normalize-space()='PIM']"))).click();
+            
+            // Step c: Click on + Add button
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(., '+ Add')]"))).click();
+            
+            // Step d,e,f: Enter Employee Details
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='First Name']"))).sendKeys("Vins");
+            driver.findElement(By.xpath("//input[@placeholder='Middle Name']")).sendKeys("John");
+            driver.findElement(By.xpath("//input[@placeholder='Last Name']")).sendKeys("Fernandis");
+            
+            // Step g: Click on Create Login Details (checkbox)
+            WebElement createLoginCheckbox = driver.findElement(By.xpath("//input[@type='checkbox']"));
+            if (!createLoginCheckbox.isSelected()) {
+                createLoginCheckbox.click();
+            }
+            
+            // Step h: Enter User Name
+            WebElement userNameInput = driver.findElement(By.xpath("//input[@name='user_name']"));
+            String newUserName = "VinsUser" + System.currentTimeMillis(); // Unique username
+            userNameInput.sendKeys(newUserName);
+            
+            // Step i: Enter Password
+            WebElement passwordInput = driver.findElement(By.xpath("//input[@name='user_password']"));
+            String password = "Password@123";
+            passwordInput.sendKeys(password);
+            
+            // Step j: Enter Confirm Password
+            WebElement confirmPasswordInput = driver.findElement(By.xpath("//input[@name='re_password']"));
+            confirmPasswordInput.sendKeys(password);
+            
+            // Step k: Click on Save
+            driver.findElement(By.xpath("//button[@type='submit' and text()=' Save ']")).click();
+            
+            // Step l: Logout
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//p[contains(text(),'Admin')]"))).click(); // Open user menu
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='Logout']"))).click();
+            
+            // Step m: Login using new username and password
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='username']"))).sendKeys(newUserName);
+            driver.findElement(By.xpath("//input[@name='password']")).sendKeys(password);
+            driver.findElement(By.xpath("//button[@type='submit']")).click();
+            
+            // Step n: Display name of employee on logout link
+            WebElement profileName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[@class='oxd-userdropdown-name']")));
+            System.out.println("Employee Name: " + profileName.getText());
+            
+            // Step o: Click on 'My Info'
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[normalize-space()='My Info']"))).click();
+            
+            // Step p: Display Employee ID
+            WebElement empIdElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[label='Employee Id']/following-sibling::div")) );
+            System.out.println("Employee ID: " + empIdElement.getText());
+            
+            // Step q: Logout
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//p[contains(text(),'Admin')]"))).click();
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='Logout']"))).click();
+            
+            // Step r: Login with admin again
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='username']"))).sendKeys("admin");
+            driver.findElement(By.xpath("//input[@name='password']")).sendKeys("admin123");
+            driver.findElement(By.xpath("//button[@type='submit']")).click();
+            
+            // Step s: Click on Admin
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[normalize-space()='Admin']"))).click();
+            
+            // Step t: Enter username to search
+            WebElement searchUserInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Search Username']")));
+            searchUserInput.sendKeys(newUserName);
+            
+            // Step u: Click Search
+            driver.findElement(By.xpath("//button[@type='submit' and text()='Search']")).click();
+            
+            // Step v: Delete the record
+            // Wait for results and delete
+            WebElement deleteBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@title='Delete']")));
+            deleteBtn.click();
+            
+            // Confirm delete in dialog
+            WebElement confirmDeleteBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()=' Yes, Delete ']")));
+            confirmDeleteBtn.click();
+            
+            // Step w: Logout
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//p[contains(text(),'Admin')]"))).click();
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='Logout']"))).click();
+            
+            System.out.println("Automation completed successfully.");
+
+        } catch(Exception e) {
+            e.printStackTrace();
+        } finally {
+            // Close browser
+            driver.quit();
+        }
+    }
+}

@@ -1,0 +1,53 @@
+package com.Assignments;
+
+import java.time.Duration;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+/*18.Open https://www.rediff.com/ 
+		a.Click on Money
+		b.Click on More Gainers
+		c.Display title of all the headers
+		d.Display total no of rows
+		e.Display any row randomly
+		f.Display list of all the companies (Company name only)
+		g.Read all current price and display the highest price.
+	(Read all the current price, store in array and then sort an array so you will get highest price)
+*/
+public class A18_rediff_HandlingTables {
+
+	public static void main(String[] args) {
+		Map<String, Object>pref = new HashMap<>();
+		pref.put("profile.credentials_enable_serve", false);
+		pref.put("profile.password_manager_leak_detection", false);
+		ChromeOptions op = new ChromeOptions();
+		op.setExperimentalOption("prefs", pref);
+
+		WebDriver driver = new ChromeDriver(op);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		driver.manage().window().maximize();
+		driver.get("https://www.rediff.com/ ");
+		//a.Click on Money
+		driver.findElement(By.partialLinkText("Money")).click();
+		//b.Click on More Gainers
+		driver.findElement(By.partialLinkText("Gainers")).click();
+		//c.Display title of all the headers
+		List<WebElement>headers = driver.findElements(By.xpath("//*[@id=\"leftcontainer\"]/table/thead/tr/th"));
+		System.out.println("Headers: ");
+		for(WebElement h : headers)
+			System.out.println(h.getText());
+		//d.Display total no of rows
+		List<WebElement>rows= driver.findElements(By.xpath("//*[@id=\"leftcontainer\"]/table/tbody/tr"));
+		System.out.println("Total Rows: " +rows.size());
+		
+		
+	}
+
+}

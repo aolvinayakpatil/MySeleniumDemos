@@ -1,0 +1,20 @@
+package com.Assignments;
+/*13.Open https://www.redbus.in/
+		a.Click on From 
+		b.Enter first 4 characters from your city (Kolhapur – kolh)
+		c.Click on the 1st option (City)
+		d.Click on To
+		e.Enter Bang (Bangalore)
+		f.Click on Bangalore from the list
+		g.Click on Calendar icon
+		h.Click on 31
+		i.Click on Search buses button
+		j.Display the 1st bus from list
+*/
+public class A13_redBus {
+
+	public static void main(String[] args) {
+		
+	}
+
+}

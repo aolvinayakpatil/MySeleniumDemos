@@ -1,5 +1,10 @@
 package com.Assignments;
-
+/*6.Open https://www.echotrak.com/Login.aspx?ReturnUrl=%2f
+	a.Enter user name (vinayak)
+	b.Enter password (vinayak123)
+	c.Click on Login button
+Use CssSelector  locator
+*/
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

@@ -1,0 +1,115 @@
+package com.Assignments;
+
+import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+/*17.Open https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
+		a.Login with Admin (admin, admin123)| b.Click on PIM |c.Click on + Add button
+		d.Enter First Name | e.Enter Middle Name | f.Enter Last Name | g.Click on Create Login Details
+		h.Enter User Name |	i.Enter Password | j.Enter Confirm Password | k.Click on Save Button
+		l.Logout | m.Login using data provided in step no h & i | n.Display name of employee on logout link
+		o.Click on My Info | p.Display the Employee ID | q.Logout |	r.Login with admin | s.Click on Admin
+		t.Enter user name | u.Click on Search |	v.Delete the record displayed |	w.Logout
+		
+		//Map<String, Object>pref = new HashMap<>();
+		pref.put("profile.credentials_enable_serve", false);
+		pref.put("profile.password_manager_leak_detection", false);
+		ChromeOptions op = new ChromeOptions();
+		op.setExperimentalOption("prefs", pref);
+		
+		WebDriver driver = new ChromeDriver(op);
+ */
+public class A17_OHRM_loginLogout {
+
+	public static void main(String[] args) throws InterruptedException {
+		Map<String, Object>pref = new HashMap<>();
+		pref.put("profile.credentials_enable_serve", false);
+		pref.put("profile.password_manager_leak_detection", false);
+		ChromeOptions op = new ChromeOptions();
+		op.setExperimentalOption("prefs", pref);
+		
+		WebDriver driver = new ChromeDriver(op);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		driver.manage().window().maximize();
+		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+		//a.Login with Admin (admin, admin123)
+		driver.findElement(By.name("username")).sendKeys("admin");
+		driver.findElement(By.name("password")).sendKeys("admin123");
+		driver.findElement(By.className("oxd-button")).submit();
+		//b.Click on PIM
+		driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[1]/aside/nav/div[2]/ul/li[2]/a")).click();
+		//c.Click on +Add button
+		driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[2]/div[1]/button")).click();
+		//d,e,f.Add Employee Details
+		driver.findElement(By.name("firstName")).sendKeys("V");
+		driver.findElement(By.name("middleName")).sendKeys("D");
+		driver.findElement(By.name("lastName")).sendKeys("P");
+		//g.Click on Create Login Details RadioButton
+		WebElement createLoginCheckbox = driver.findElement(By.className("oxd-switch-wrapper"));
+		createLoginCheckbox.click();
+		// h. Enter User Name
+		String newUserName = "vdp@003";
+		WebElement userName = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div[2]/div[3]/div/div[1]/div/div[2]/input"));
+		userName.sendKeys(newUserName);
+		// i. Enter Password
+		String newPassword = "password@123";
+		WebElement pass = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div[2]/div[4]/div/div[1]/div/div[2]/input"));
+		pass.sendKeys(newPassword);
+		// j. Enter Confirm Password
+		WebElement confirmPass = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div[2]/div[4]/div/div[2]/div/div[2]/input"));
+		confirmPass.sendKeys(newPassword);
+		// k. Click Save
+		driver.findElement(By.className("orangehrm-left-space")).click();
+		Thread.sleep(10000);
+		//l.Logout
+		driver.findElement(By.className("oxd-userdropdown-icon")).click();
+		driver.findElement(By.partialLinkText("Log")).click();
+		//m.Login using data provided in step no h & i
+		//		Thread.sleep(5000);
+		driver.findElement(By.name("username")).sendKeys(newUserName);
+		driver.findElement(By.name("password")).sendKeys(newPassword);
+		//		Thread.sleep(2000);
+		driver.findElement(By.className("oxd-button")).submit();
+		//n.Display name of employee on logout link
+		WebElement displayEmpName = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[1]/header/div[1]/div[2]/ul/li/span/p"));
+		System.out.println("Employee Name: " + displayEmpName.getText());
+		//o.Click on My Info
+		driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[1]/aside/nav/div[2]/ul/li[3]/a/span")).click();
+		// p. Display Employee ID
+		WebElement displayEmpId = driver.findElement(By.className("oxd-input--active"));
+		System.out.println("Employee ID: " + displayEmpId.getAttribute("value"));
+		// q. Logout
+		driver.findElement(By.className("oxd-userdropdown-icon")).click();
+		driver.findElement(By.partialLinkText("Log")).click();
+		//r.Login with admin
+		driver.findElement(By.name("username")).sendKeys("admin");
+		driver.findElement(By.name("password")).sendKeys("admin123");
+		driver.findElement(By.className("oxd-button")).submit();
+		//s.Click on Admin
+		wait.until(ExpectedConditions.elementToBeClickable(By.partialLinkText("Admin"))).click();
+		//t.Enter user name | u.Click on Search
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div/div[1]/div/div[2]/input"))).sendKeys(newUserName);
+		wait.until(ExpectedConditions.elementToBeClickable(By.className("oxd-button--secondary"))).click();
+		//v.Delete the record displayed
+		//		Thread.sleep(2000);
+		WebElement chkBox = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[2]/div[3]/div/div[2]/div/div/div[1]")));
+		chkBox.click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.className("oxd-button--label-danger"))).click();
+		Thread.sleep(2000);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"app\"]/div[3]/div/div/div/div[3]/button[2]"))).click();
+		//w.click on Logout
+		wait.until(ExpectedConditions.elementToBeClickable(By.className("oxd-userdropdown-icon"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.partialLinkText("Log"))).click();
+
+	}
+
+}

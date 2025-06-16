@@ -1,0 +1,24 @@
+package com.Assignments;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+/*18.Open https://www.rediff.com/ 
+		a.Click on Money
+		b.Click on More Gainers
+		c.Display title of all the headers
+		d.Display total no of rows
+		e.Display any row randomly
+		f.Display list of all the companies (Company name only)
+		g.Read all current price and display the highest price.
+	(Read all the current price, store in array and then sort an array so you will get highest price)
+*/
+public class A18_rediff_HandlingTables {
+
+	public static void main(String[] args) {
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		
+	}
+
+}

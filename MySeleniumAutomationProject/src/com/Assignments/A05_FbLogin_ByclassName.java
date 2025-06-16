@@ -1,5 +1,10 @@
 package com.Assignments;
-
+/*5.Open https://www.facebook.com
+	a.Enter valid user name
+	b.Enter invalid password
+	c.Click on Login button
+Use ClassName locator
+*/
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

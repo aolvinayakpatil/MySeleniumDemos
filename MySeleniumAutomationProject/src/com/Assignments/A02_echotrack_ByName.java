@@ -1,4 +1,9 @@
 package com.Assignments;
+/*2.Open https://www.echotrak.com/Login.aspx?ReturnUrl=%2f
+	a.Enter user name (vinayak)
+	b.Enter password (vinayak123)
+	c.Click on Login button
+	Use Name locator*/
 
 
 import org.openqa.selenium.By;
