@@ -1,0 +1,36 @@
+package com.Assignments;
+/*20.Open https://www.iplt20.com/points-table/men/2024 
+a.Display list of all the Teams
+b.Display all result of each team about N W L
+		Display count of N, W & L
+		Display the result as follow
+		KKR	NNWWW	N-2, W-3, L-0
+*/
+import java.time.Duration;
+import java.util.List;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class A20_iplT20 {
+
+	public static void main(String[] args) {
+		
+		WebDriver driver= new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.manage().window().maximize();
+		driver.get("https://www.iplt20.com/points-table/men/2024");
+		//a.Display list of all the Teams
+		List<WebElement> teams = driver.findElements(By.xpath("//*[@id=\"pointsdata\"]/tr/td[3]"));
+		for (WebElement t : teams)
+			System.out.println(t.getText());
+		List<WebElement> wins = driver.findElements(By.xpath("//*[@id=\"pointsdata\"]/tr/td[12]"));
+		for (WebElement w : wins)
+			System.out.println(w.getText());
+		List<WebElement> losses = driver.findElements(By.xpath("//*[@id=\"pointsdata\"]/tr/td[12]"));
+		for (WebElement l : losses)
+			System.out.println(l.getText());
+	}
+
+}

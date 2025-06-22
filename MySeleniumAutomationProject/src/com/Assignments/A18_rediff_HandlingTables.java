@@ -1,6 +1,18 @@
 package com.Assignments;
-
+/*18.Open https://www.rediff.com/ 
+		a.Click on Money
+		b.Click on More Gainers
+		c.Display title of all the headers
+		d.Display total no of rows
+		e.Display any row randomly
+		f.Display list of all the companies (Company name only)
+		g.Read all current price and display the highest price.
+(Read all the current price, store in array and then sort an array so you will get highest price)
+ */
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,16 +24,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-/*18.Open https://www.rediff.com/ 
-		a.Click on Money
-		b.Click on More Gainers
-		c.Display title of all the headers
-		d.Display total no of rows
-		e.Display any row randomly
-		f.Display list of all the companies (Company name only)
-		g.Read all current price and display the highest price.
-	(Read all the current price, store in array and then sort an array so you will get highest price)
- */
+
 public class A18_rediff_HandlingTables {
 
 	public static void main(String[] args) {
@@ -55,14 +58,24 @@ public class A18_rediff_HandlingTables {
 		List<WebElement>cmpName=driver.findElements(By.xpath("//*[@id=\"leftcontainer\"]/table/tbody/tr/td[1]/a"));
 		for(WebElement cn : cmpName)
 			System.out.println(cn.getText());
-		//g.Read all current price
+		//g.Read all current price and display the highest price.(Read all the current price, store in array and then sort an array so you will get highest price)
 		List<WebElement>currentPrice = driver.findElements(By.xpath("//*[@id=\"leftcontainer\"]/table/tbody/tr/td[4]"));
-		for (WebElement cp : currentPrice)
-			System.out.println(cp.getText());
-		driver.close();
-		//display the highest price.
-		//(Read all the current price, store in array and then sort an array so you will get highest price)
+		double[]cpArray = new double[currentPrice.size()];
+		List<Double>cpList = new ArrayList<Double>();
+		for(int j = 0; j<currentPrice.size(); j++)
+		{
+			//			String s = currentPrice.get(j).getText();
+			//			s =s.replace(",","");
+			//			cpArray[j] = Double.parseDouble(s);
+			cpArray[j]=Double.parseDouble(currentPrice.get(j).getText().replace(",",""));
+			cpList.add(Double.parseDouble(currentPrice.get(j).getText().replace(",","")));
+		}
+		Arrays.sort(cpArray);
+		System.out.println("Highest Price: " +cpArray[cpArray.length-1]);
+		Collections.sort(cpList);
+		System.out.println("Highest Price: "+cpList.get(cpList.size()-1));
 
+		driver.close();
 	}
 
 }
