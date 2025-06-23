@@ -1,4 +1,4 @@
 # Ignore all .log files
 *.log
 # Ignore all .metadata files
-.metadata.*
+.metadata/
