@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Single Class">
+	<test name="Flipkart Test">
+		<classes>
+			<class name="com.TestNG.Assignment.A29_Flipkart"></class>
+		</classes>
+	</test>
+</suite>

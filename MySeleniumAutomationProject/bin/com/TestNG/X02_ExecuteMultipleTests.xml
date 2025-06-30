@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Multiple Tests">
+	<test name="FlipkartX01_ExecuteSingleTest.xml Test">
+		<classes>
+			<class name="com.TestNG.Assignment.A29_Flipkart">
+				<methods>
+					<include name="clickOnAppliances"></include>
+					<include name="clickOnFlightBookings"></include>
+					<include name="clickOnGrocery"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>
+</suite>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Multiple Tests">
+	<test name="FlipkartX01_ExecuteSingleTest.xml Test">
+		<classes>
+			<class name="com.TestNG.Assignment.A29_Flipkart"></class>
+			<class name="com.TestNG.D05_DataProviderDemo"></class>
+			
+		</classes>
+	</test>
+</suite>

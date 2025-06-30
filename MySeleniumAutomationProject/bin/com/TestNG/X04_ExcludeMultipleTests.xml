@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Exclude Multiple Tests">
+	<test name="Flipkart Test">
+		<classes>
+			<class name="com.TestNG.Assignment.A29_Flipkart">
+				<methods>
+					<exclude name="clickOnAppliances"></exclude>
+					<exclude name="clickOnFlightBookings"></exclude>
+					<exclude name="clickOnGrocery"></exclude>
+				</methods>
+			</class>
+		</classes>
+	</test>
+</suite>

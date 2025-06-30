@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Executing Groups">
+	<test name="FlipKart tests">
+		<groups>
+			<run>
+				<include name="Group1"> </include>
+			</run>		
+		</groups>
+		<classes>
+			<class name="com.TestNG.Assignment.A29_Flipkart"></class>
+		</classes>
+	</test>
+
+</suite>

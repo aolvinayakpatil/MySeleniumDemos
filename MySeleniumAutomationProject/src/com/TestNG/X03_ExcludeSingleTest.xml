@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Exclude Single Test">
+	<test name="Flipkart Test">
+		<classes>
+			<class name="com.TestNG.Assignment.A29_Flipkart">
+				<methods>
+					<exclude name="clickOnAppliances"></exclude>
+				</methods>
+			</class>
+		</classes>
+	</test>
+</suite>
