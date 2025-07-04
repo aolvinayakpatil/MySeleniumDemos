@@ -13,7 +13,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class A22_AmezonMenu {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -22,9 +22,9 @@ public class A22_AmezonMenu {
 //		Actions act = new Actions(driver);
 		WebElement all = driver.findElement(By.xpath("//*[@id=\"nav-main\"]/div[1]"));
 		System.out.println(all.getText());
-		List<WebElement>allMenus=driver.findElements(By.xpath("//*[@id=\"nav-xshop\"]/ul/li"));
-		for(WebElement a : allMenus)
-			System.out.println(a.getText());
+		List<WebElement>allMenus=driver.findElements(By.xpath("//*[@id=\"nav-xshop\"]/ul/li/div/a"));
+		for(WebElement a : allMenus) 
+			System.out.println(a.getAttribute("innerText"));
 		driver.close();		
 	}
 

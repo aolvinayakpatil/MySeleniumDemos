@@ -4,12 +4,13 @@ import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.annotations.Test;
 
 public class D02OnlineShopping_Priority {
   @Test(priority=4)
   public void testMyntra() {
-	  WebDriver driver= new ChromeDriver();
+	  WebDriver driver= new EdgeDriver();
 	  driver.manage().window().maximize();
 	  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	  driver.get("https://www.myntra.com/");
@@ -19,7 +20,7 @@ public class D02OnlineShopping_Priority {
   }
   @Test(priority=2)
   public void testDecathlon() {
-	  WebDriver driver= new ChromeDriver();
+	  WebDriver driver= new EdgeDriver();
 	  driver.manage().window().maximize();
 	  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	  driver.get("https://www.decathlon.in/");

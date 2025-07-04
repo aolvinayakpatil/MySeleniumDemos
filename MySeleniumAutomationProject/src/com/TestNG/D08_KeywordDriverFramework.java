@@ -27,7 +27,7 @@ public class D08_KeywordDriverFramework {
   }
   @BeforeTest
   public void beforeTest() throws IOException {
-	  file=new File("src/com/TestNG/MyLocators.properties");
+	  file=new File("src/com/TestNG/D08_KDFramework_MyLocators.properties");
 	  fis=new FileInputStream(file);
 	  prop=new Properties();
 	  prop.load(fis);

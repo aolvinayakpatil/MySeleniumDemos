@@ -1,18 +1,3 @@
-package com.Assignments;
-
-import java.time.Duration;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-//import org.openqa.selenium.support.ui.ExpectedConditions;
-//import org.openqa.selenium.support.ui.WebDriverWait;
-
-
 /*17.Open https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
 		a.Login with Admin (admin, admin123)| b.Click on PIM |c.Click on + Add button
 		d.Enter First Name | e.Enter Middle Name | f.Enter Last Name | g.Click on Create Login Details
@@ -29,6 +14,16 @@ import org.openqa.selenium.chrome.ChromeOptions;
 		
 		WebDriver driver = new ChromeDriver(op);
  */
+package com.Assignments;
+import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
 public class A17_OHRM_loginLogout {
 
 	public static void main(String[] args) throws InterruptedException {
@@ -37,7 +32,6 @@ public class A17_OHRM_loginLogout {
 		pref.put("profile.password_manager_leak_detection", false);
 		ChromeOptions op = new ChromeOptions();
 		op.setExperimentalOption("prefs", pref);
-		
 		WebDriver driver = new ChromeDriver(op);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		driver.manage().window().maximize();
