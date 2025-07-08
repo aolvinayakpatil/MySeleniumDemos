@@ -39,7 +39,7 @@ public class A31_jotFormusingpropertiesFile {
   @BeforeTest
   public void launchBrowser() throws IOException 
   {
-	  file=new File("src/com/TestNG/Assignment/A31_jotFormLocators.properties");
+	  file=new File("PropertiesFile/jotFormLocators.properties");
 	  fis=new FileInputStream(file);
 	  prop=new Properties();
 	  prop.load(fis);

@@ -24,7 +24,7 @@ public class A31_RediffusingpropertiesFile {
   @BeforeTest
   public void launchBrowser() throws IOException 
   {
-	  file=new File("src/com/TestNG/Assignment/A31_RediffLocators.properties");
+	  file=new File("PropertiesFile/RediffLocators.properties");
 	  fis=new FileInputStream(file);
 	  prop=new Properties();
 	  prop.load(fis);

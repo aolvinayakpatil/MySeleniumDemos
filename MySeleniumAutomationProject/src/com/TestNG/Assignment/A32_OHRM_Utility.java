@@ -36,7 +36,7 @@ public class A32_OHRM_Utility {
 	}
 	public void empInfo() throws InterruptedException
 	{
-		driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[1]/aside/nav/div[2]/ul/li[2]/a/span")).click();
+		driver.findElement(By.xpath("//span[normalize-space()='My Info']")).click();
 		Thread.sleep(5000);
 		WebElement displayEmpId=driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[2]/div[1]/div[1]/div/div[2]/input"));
 		String empId= displayEmpId.getAttribute("value");

@@ -50,3 +50,4 @@
 .metadata/.plugins/org.eclipse.swt/EBWebView/ShaderCache/data_1
 .metadata/version.ini
 *.dat
+.metadata/.lock_info

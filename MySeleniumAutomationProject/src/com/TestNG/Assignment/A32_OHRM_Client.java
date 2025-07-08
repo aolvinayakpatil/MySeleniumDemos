@@ -1,13 +1,13 @@
 package com.TestNG.Assignment;
 
 import java.time.Duration;
-//import java.util.HashMap;
-//import java.util.Map;
+import java.util.HashMap;
+import java.util.Map;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-//import org.openqa.selenium.chrome.ChromeDriver;
-//import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+//import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -30,14 +30,14 @@ public class A32_OHRM_Client {
 	@BeforeTest
 	public void openBrowser()
 	{
-		/*Map<String, Object>pref = new HashMap<>();
+		Map<String, Object>pref = new HashMap<>();
 		pref.put("profile.credentials_enable_serve", false);
 		pref.put("profile.password_manager_leak_detection", false);
 		ChromeOptions op = new ChromeOptions();
 		op.setExperimentalOption("prefs", pref);
-		WebDriver driver = new ChromeDriver(op);*/
+		driver = new ChromeDriver(op);
 
-		driver=new EdgeDriver();
+		//driver=new EdgeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
