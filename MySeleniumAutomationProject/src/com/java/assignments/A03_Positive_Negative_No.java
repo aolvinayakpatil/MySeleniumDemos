@@ -1,4 +1,4 @@
-package com.javaAssignment;
+package com.java.assignments;
 //3.Accept a number from user and check whether it is +ve or –ve
 import java.util.Scanner;
 

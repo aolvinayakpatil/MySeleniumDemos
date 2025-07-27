@@ -1,4 +1,4 @@
-package com.javaAssignment;
+package com.java.assignments;
 //2.Accept a bank balance from user and show the message as "Low Balance" if balance is less than 2000.
 import java.util.Scanner;
 

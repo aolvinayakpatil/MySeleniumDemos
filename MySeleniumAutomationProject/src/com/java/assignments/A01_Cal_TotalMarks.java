@@ -1,4 +1,4 @@
-package com.javaAssignment;
+package com.java.assignments;
 //1.Accept marks of 5 subjects and calculate total and average marks.
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package com.javaAssignment;
+package com.java.assignments;
 /*4.Accept selling amount and purchase amount from user and display whether it is profit or loss
 and how much?*/
 import java.util.Scanner;
